@@ -1,0 +1,15 @@
+/* Subtle watermark crest background repeating */
+.crest-bg {
+    background-color: #0c1626;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
+        url("data:image/svg+xml,%3Csvg width='320' height='320' viewBox='0 0 320 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.035' stroke-width='1.5'%3E%3Ccircle cx='160' cy='160' r='140'/%3E%3Ccircle cx='160' cy='160' r='115' stroke-dasharray='4,4'/%3E%3Cpath d='M160 40 L160 280 M40 160 L280 160'/%3E%3Ctext x='160' y='145' font-size='16' font-family='serif' fill='%23ffffff' fill-opacity='0.04' text-anchor='middle'%3EIES GAMUSINO%3C/text%3E%3Cpath d='M160 90 Q185 120 185 170 Q160 210 160 210 Q160 210 135 170 Q135 120 160 90 Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-position: center;
+    background-size: auto, 340px 340px;
+}
+
+/* Calendar styling */
+.cal-day-active {
+    background-color: #f1f5f9;
+    border-radius: 9999px;
+    font-weight: 600;
+}

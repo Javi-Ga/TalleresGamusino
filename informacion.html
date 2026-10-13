@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guardianes Digitales · IES Gamusino</title>
+  <!-- Google Fonts & Font Awesome Icons (los mismos que el listado) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/informacion.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Header / Barra de Navegación (igual que en el listado) -->
+  <header class="main-header">
+    <div class="header-container">
+      <a class="logo" href="index.html" aria-label="IES Gamusino, volver al listado de talleres">
+        <i class="fa-solid fa-feather-pointed" aria-hidden="true"></i>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="informacion.html" aria-current="page">Información</a>
+        <a href="inscripcion.html">Inscripción</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="header-tools">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input type="text" placeholder="Search for..." aria-label="Buscar">
+        </div>
+        <button class="icon-btn" aria-label="Idioma"><i class="fa-solid fa-language" aria-hidden="true"></i></button>
+        <button class="icon-btn" aria-label="Perfil"><i class="fa-regular fa-user" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- Hero: imagen del taller con banda de título -->
+    <section class="hero-section">
+      <img
+        class="hero-img"
+        src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80"
+        alt="Estudiantes trabajando en el aula de informática durante el taller de ciberseguridad">
+      <div class="hero-band">
+        <div class="container">
+          <p class="sub-brand">IES GAMUSINO</p>
+          <h1 class="hero-title">Guardianes Digitales</h1>
+          <p class="hero-subtitle">Todo sobre ciberseguridad y hacking ético</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="main-content">
+      <div class="container">
+
+        <hr class="divider">
+
+        <p class="intro">
+          Vivimos en un mundo hiperconectado donde proteger la información es el mayor reto tecnológico.
+          Aprenderás los fundamentos del hacking ético, el análisis de vulnerabilidades y las mejores técnicas
+          para blindar redes y sistemas frente a ataques reales, para estudiantes con curiosidad por una
+          formación de vanguardia con alta proyección práctica.
+        </p>
+
+        <section class="info-block" aria-labelledby="que-aprenderas">
+          <h2 id="que-aprenderas" class="block-title">
+            <svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <line x1="12" y1="10.5" x2="12" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="12" cy="7.3" r="1.25" fill="currentColor"/>
+            </svg>
+            Qué aprenderás:
+          </h2>
+          <ul class="info-list">
+            <li>Escaneo de redes y detección de vulnerabilidades.</li>
+            <li>Técnicas de pentesting y defensa en entornos virtuales.</li>
+            <li>Criptografía práctica y bastionado de sistemas.</li>
+          </ul>
+        </section>
+
+        <section class="info-block" aria-labelledby="metodologia">
+          <h2 id="metodologia" class="block-title">Metodología:</h2>
+          <ul class="info-list">
+            <li>Prácticas 100% en laboratorio cerrado.</li>
+            <li>Retos CTF por equipo.</li>
+          </ul>
+        </section>
+
+        <section class="info-block" aria-labelledby="detalles-clave">
+          <h2 id="detalles-clave" class="block-title">Detalles clave:</h2>
+          <ul class="info-list">
+            <li>Lugar: Aula de informática (IES Gamusino)</li>
+            <li>Duración: 20 horas lectivas.</li>
+            <li>Nivel: Iniciación/Intermedio (Sin requisitos previos)</li>
+          </ul>
+        </section>
+
+        <!-- Llamada a la acción: lleva al formulario (pantalla 3) -->
+        <div class="cta">
+          <a class="btn-cta" href="inscripcion.html">Inscribirme ahora</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer (igual que en el listado) -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-copy">
+        IES GAMUSINO
+      </div>
+      <div class="footer-socials">
+        <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

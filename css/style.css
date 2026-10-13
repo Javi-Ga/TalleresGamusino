@@ -501,3 +501,129 @@ body {
     display: none;
   }
 }
+
+/* =========================================
+   ESTILOS PARA LA PÁGINA 4 (CONFIRMACIÓN)
+   ========================================= */
+
+/* Fondo específico para simular los logos repetidos como marca de agua */
+.bg-watermark-tiled {
+  /* Genera un patrón tenue en el fondo manteniendo el azul oscuro */
+  background-image: 
+    radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 40%),
+    radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 40%);
+  background-size: 300px 300px;
+  background-position: 0 0, 150px 150px;
+}
+
+.success-main {
+  /* Calcula la altura para centrar el contenido ocupando la pantalla */
+  min-height: calc(100vh - 120px); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 700px;
+}
+
+.success-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.success-subtitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* Tarjeta gris de datos */
+.success-card {
+  background-color: #d1d5db; /* Gris claro */
+  color: #111;
+  border-radius: 12px;
+  padding: 40px 60px;
+  width: 100%;
+  max-width: 480px;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.success-card-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.success-card-item:last-child {
+  margin-bottom: 0;
+}
+
+.success-card-item i {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  color: #222;
+}
+
+.success-message {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 35px;
+}
+
+/* Modificador del botón verde para esta vista */
+.btn-success {
+  font-size: 24px;
+  padding: 12px 35px;
+  border-radius: 10px;
+}
+
+/* Ajustes Responsive */
+@media (max-width: 600px) {
+  .success-title {
+    font-size: 26px;
+  }
+  .success-card {
+    padding: 30px 40px;
+  }
+  .btn-success {
+    font-size: 20px;
+    padding: 10px 25px;
+  }
+}
+
+/* =========================================
+   BOTÓN VERDE GLOBAL (CTA)
+   ========================================= */
+.btn-green {
+  display: inline-block;
+  background-color: var(--accent-lime); /* Este es tu verde #99e265 */
+  color: var(--text-dark);
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 12px 35px;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-green:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(153, 226, 101, 0.4);
+}

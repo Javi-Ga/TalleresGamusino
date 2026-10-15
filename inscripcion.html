@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscripción al taller · IES Gamusino</title>
+  <!-- Google Fonts & Font Awesome Icons (los mismos que el listado) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-watermark-tiled">
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Header / Barra de Navegación (igual que en informacion.html) -->
+  <header class="main-header">
+    <div class="header-container">
+      <a class="logo" href="index.html" aria-label="IES Gamusino, volver al listado de talleres">
+        <i class="fa-solid fa-feather-pointed" aria-hidden="true"></i>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="informacion.html">Información</a>
+        <a href="inscripcion.html" aria-current="page">Inscripción</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="header-tools">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input type="text" placeholder="Search for..." aria-label="Buscar">
+        </div>
+        <button class="icon-btn" aria-label="Idioma"><i class="fa-solid fa-language" aria-hidden="true"></i></button>
+        <button class="icon-btn" aria-label="Perfil"><i class="fa-regular fa-user" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="main-content">
+      <div class="container form-container">
+
+        <h1 class="form-title">Inscripción al taller</h1>
+        <p class="form-intro">Rellena el formulario para reservar tu plaza. Todos los campos son obligatorios salvo las
+          observaciones.</p>
+
+        <!-- Formulario: al enviarlo lleva a la confirmación (pantalla 4) -->
+        <form class="form-card" action="confirmacion.html" method="get">
+
+          <div class="form-grid">
+
+            <div class="form-field">
+              <label for="taller">Taller</label>
+              <div class="select-wrapper">
+                <select id="taller" name="taller" required>
+                  <option value="" disabled selected>Selecciona un taller</option>
+                  <option value="guardianes-digitales">Guardianes Digitales</option>
+                  <option value="robo-lab">Robo-lab</option>
+                  <option value="codigo-vivo">Código vivo</option>
+                  <option value="nextgen-3d">NextGen 3D</option>
+                </select>
+                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="fecha">Fecha</label>
+              <input type="date" id="fecha" name="fecha" required>
+            </div>
+
+            <div class="form-field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" autocomplete="given-name" required>
+            </div>
+
+            <div class="form-field">
+              <label for="curso">Curso</label>
+              <div class="select-wrapper">
+                <select id="curso" name="curso" required>
+                  <option value="" disabled selected>¿Qué estás cursando?</option>
+                  <option value="DA1D1A">DA1D1A</option>
+                  <option value="DA2D1A">DA2D1A</option>
+                  <option value="DW1D1A">DW1D1A</option>
+                  <option value="DW2D1A">DW2D1A</option>
+                </select>
+                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="apellidos">Apellidos</label>
+              <input type="text" id="apellidos" name="apellidos" autocomplete="family-name" required>
+            </div>
+
+            <div class="form-field">
+              <label for="correo">Correo</label>
+              <input type="email" id="correo" name="correo" autocomplete="email" required>
+            </div>
+
+            <div class="form-field form-field-wide">
+              <label for="observaciones">Observaciones <span class="form-optional">(opcional)</span></label>
+              <textarea id="observaciones" name="observaciones" rows="4"></textarea>
+            </div>
+
+          </div>
+
+          <!-- Acciones: volver a la información, cancelar y enviar -->
+          <div class="form-actions">
+            <a class="form-link" href="informacion.html"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+              Volver</a>
+            <a class="form-link" href="index.html"><i class="fa-regular fa-circle-xmark" aria-hidden="true"></i>
+              Cancelar</a>
+            <button class="btn-green" type="submit">Enviar</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer (igual que en el listado) -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-copy">
+        IES GAMUSINO
+      </div>
+      <div class="footer-socials">
+        <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

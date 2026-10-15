@@ -21,7 +21,7 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
   /* Marca de agua de fondo que emula el sello circular de la imagen */
-  background-image: 
+  background-image:
     radial-gradient(circle at 10% 8%, rgba(255, 255, 255, 0.04) 0%, transparent 25%),
     radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.03) 0%, transparent 30%),
     radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.02) 0%, transparent 40%);
@@ -178,8 +178,8 @@ body {
   font-weight: 700;
   padding: 8px 18px;
   border-radius: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .featured-image img {
@@ -299,7 +299,7 @@ body {
   color: #333;
   border-radius: 6px;
   padding: 16px 14px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .calendar-header {
@@ -490,6 +490,7 @@ body {
 
 /* Responsive */
 @media (max-width: 850px) {
+
   .featured-card,
   .middle-grid,
   .news-body,
@@ -509,16 +510,16 @@ body {
 /* Fondo específico para simular los logos repetidos como marca de agua */
 .bg-watermark-tiled {
   /* Genera un patrón tenue en el fondo manteniendo el azul oscuro */
-  background-image: 
-    radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 40%),
-    radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 40%);
+  background-image:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
   background-size: 300px 300px;
   background-position: 0 0, 150px 150px;
 }
 
 .success-main {
   /* Calcula la altura para centrar el contenido ocupando la pantalla */
-  min-height: calc(100vh - 120px); 
+  min-height: calc(100vh - 120px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -549,7 +550,8 @@ body {
 
 /* Tarjeta gris de datos */
 .success-card {
-  background-color: #d1d5db; /* Gris claro */
+  background-color: #d1d5db;
+  /* Gris claro */
   color: #111;
   border-radius: 12px;
   padding: 40px 60px;
@@ -598,9 +600,11 @@ body {
   .success-title {
     font-size: 26px;
   }
+
   .success-card {
     padding: 30px 40px;
   }
+
   .btn-success {
     font-size: 20px;
     padding: 10px 25px;
@@ -612,7 +616,8 @@ body {
    ========================================= */
 .btn-green {
   display: inline-block;
-  background-color: var(--accent-lime); /* Este es tu verde #99e265 */
+  background-color: var(--accent-lime);
+  /* Este es tu verde #99e265 */
   color: var(--text-dark);
   font-family: 'Playfair Display', serif;
   font-size: 24px;
@@ -678,7 +683,8 @@ body {
 
 /* ---------- Header: extras de informacion.html ---------- */
 .logo {
-  text-decoration: none; /* aquí el logo es un enlace */
+  text-decoration: none;
+  /* aquí el logo es un enlace */
 }
 
 :where(body:has(#contenido)) .nav-links a {
@@ -715,7 +721,8 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* mantiene la proporción de la imagen */
+  object-fit: cover;
+  /* mantiene la proporción de la imagen */
 }
 
 .hero-band {
@@ -771,7 +778,8 @@ body {
   position: relative;
   padding-left: 46px;
   font-family: var(--font-title);
-  font-size: 30.4px; /* = h3 de .section-badge-title del listado (26px × 1.17) */
+  font-size: 30.4px;
+  /* = h3 de .section-badge-title del listado (26px × 1.17) */
   font-weight: 700;
   line-height: 1.5;
   margin-bottom: 10px;
@@ -784,7 +792,8 @@ body {
   width: 30px;
   height: 30px;
   transform: translateY(-50%);
-  color: var(--accent-yellow); /* el amarillo identifica lo que informa */
+  color: var(--accent-yellow);
+  /* el amarillo identifica lo que informa */
 }
 
 .info-list {
@@ -811,13 +820,15 @@ body {
   background-color: var(--accent-lime);
   color: var(--text-dark);
   text-decoration: none;
-  font-family: var(--font-body); /* misma fuente que .btn-pill del listado */
+  font-family: var(--font-body);
+  /* misma fuente que .btn-pill del listado */
   font-size: 18px;
   font-weight: 700;
   line-height: 1.5;
   white-space: nowrap;
   padding: 14px 40px;
-  border-radius: 20px; /* mismo radio que .btn-pill */
+  border-radius: 20px;
+  /* mismo radio que .btn-pill */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   transition: background-color 0.2s ease;
 }
@@ -888,5 +899,145 @@ body {
     width: 100%;
     text-align: center;
     white-space: normal;
+  }
+}
+
+
+.form-container {
+  max-width: 760px;
+}
+
+.form-title {
+  font-family: var(--font-title);
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.form-intro {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* Tarjeta amarilla del formulario */
+.form-card {
+  background-color: var(--accent-yellow);
+  color: var(--text-dark);
+  border-radius: 16px;
+  padding: 36px 40px;
+}
+
+/* Campos en parejas (dos columnas); en móvil, una sola */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 32px;
+}
+
+.form-field-wide {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.form-optional {
+  font-weight: 500;
+}
+
+/* Campos: gris de la tarjeta de confirmación, borde inferior oscuro */
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-dark);
+  background-color: #d1d5db;
+  border: 2px solid transparent;
+  border-bottom-color: var(--text-dark);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+/* Calendario*/
+.form-field input[type="date"] {
+  background-color: #ffffff;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-field .select-wrapper select {
+  padding-right: 36px;
+}
+
+.form-field :user-invalid {
+  border-color: #ca3535;
+}
+
+.form-card :focus-visible {
+  outline: 3px solid var(--bg-dark);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+/* Acciones */
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px 28px;
+  margin-top: 32px;
+}
+
+.form-link {
+  color: var(--text-dark);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.form-link:hover {
+  text-decoration: underline;
+}
+
+button.btn-green {
+  border: 0;
+  cursor: pointer;
+}
+
+/* ---------- Responsive (inscripcion.html) ---------- */
+@media (max-width: 850px) {
+  .form-title {
+    font-size: 26px;
+  }
+
+  .form-card {
+    padding: 28px 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Enviar queda al final y ocupa todo el ancho */
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .form-actions .btn-green {
+    width: 100%;
   }
 }

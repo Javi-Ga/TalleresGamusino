@@ -959,13 +959,67 @@ a:where(:not([class])):visited {
 }
 
 /* ---------- 14. Responsive ---------- */
+/* Enfoque de escritorio a móvil, con cuatro saltos:
+   1100px  portátil pequeño
+   850px   tableta: una sola columna y carrusel táctil
+   600px   móvil: cabecera compacta y botones a todo el ancho
+   400px   móvil estrecho: se ajustan los últimos márgenes */
+
+/* Nada desborda en horizontal */
+h1,
+h2,
+h3,
+h4,
+p,
+li {
+  overflow-wrap: break-word;
+}
+
+/* Portátil pequeño */
+@media (max-width: 1100px) {
+  .middle-grid {
+    gap: 30px;
+  }
+
+  .featured-card {
+    padding: 30px;
+  }
+
+  .nav-links {
+    gap: 24px;
+  }
+}
+
+/* Tableta */
 @media (max-width: 850px) {
 
-  /* Cabecera en dos filas: logo + herramientas, navegación debajo */
+  /* Cabecera: logo y herramientas arriba, navegación debajo */
   .header-container {
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 10px 20px;
+    gap: 8px 16px;
+  }
+
+  .logo {
+    order: 1;
+  }
+
+  .header-tools {
+    order: 2;
+    flex: 1;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+
+  .search-bar {
+    flex: 1;
+    max-width: 280px;
+    min-width: 0;
+  }
+
+  .search-bar input {
+    width: 100%;
+    min-width: 0;
   }
 
   .nav-links {
@@ -973,30 +1027,71 @@ a:where(:not([class])):visited {
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 8px 24px;
+    gap: 4px 28px;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
   }
 
   .footer-container {
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
   }
 
   /* Una sola columna */
   .featured-card,
   .middle-grid,
-  .news-body,
-  .workshops-grid {
+  .news-body {
     grid-template-columns: 1fr;
+  }
+
+  .middle-grid {
+    margin-bottom: 36px;
   }
 
   .featured-card {
     padding: 28px 22px;
+    margin-bottom: 36px;
   }
 
+  .featured-image img {
+    height: 220px;
+  }
+
+  .news-img img {
+    height: 200px;
+  }
+
+  /* Carrusel táctil: las tarjetas se deslizan con el dedo */
   .carousel-arrow {
     display: none;
   }
 
+  .workshops-grid {
+    min-width: 0;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 70%);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 4px 16px;
+    margin: 0 -4px;
+    text-align: center;
+  }
+
+  .workshop-card {
+    scroll-snap-align: center;
+  }
+
+  /* Información del taller */
   #contenido .hero-section {
     min-height: 380px;
     padding-top: 32px;
@@ -1019,9 +1114,12 @@ a:where(:not([class])):visited {
     padding-left: 58px;
   }
 
-  .btn-cta {
-    width: 100%;
-    white-space: normal;
+  .intro {
+    margin-bottom: 40px;
+  }
+
+  .info-block {
+    margin-bottom: 36px;
   }
 
   /* Formulario */
@@ -1031,27 +1129,159 @@ a:where(:not([class])):visited {
 
   .form-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
-  /* Enviar queda al final y ocupa todo el ancho */
   .form-actions {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: stretch;
     text-align: center;
   }
 
-  .form-actions .btn-green {
-    width: 100%;
+  .form-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
   }
 
   /* Confirmación */
+  .success-main {
+    min-height: auto;
+    padding: 40px 20px;
+  }
+
   .success-card {
-    padding: 28px 28px;
+    padding: 28px;
   }
 }
 
+/* Móvil */
 @media (max-width: 600px) {
-  .search-bar input {
-    width: 90px;
+  .container,
+  .header-container,
+  .footer-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero-section {
+    padding: 36px 0 24px;
+  }
+
+  /* El salto de línea del título se deja al navegador */
+  .hero-title br {
+    display: none;
+  }
+
+  #contenido .hero-section {
+    min-height: 320px;
+    padding-top: 24px;
+  }
+
+  .hero-band {
+    padding: 16px 0 22px;
+  }
+
+  .divider {
+    margin-bottom: 28px;
+  }
+
+  #contenido .main-content {
+    padding: 28px 0 48px;
+  }
+
+  .workshops-section {
+    padding-bottom: 40px;
+  }
+
+  .workshops-grid {
+    grid-auto-columns: 82%;
+  }
+
+  .card-img-wrap img {
+    height: 170px;
+  }
+
+  /* Botones cómodos para el pulgar */
+  .btn-pill,
+  .btn-green,
+  .btn-cta {
+    min-height: 48px;
+  }
+
+  .btn-cta,
+  .success-container .btn-green {
+    width: 100%;
+    white-space: normal;
+  }
+
+  .cta {
+    margin-top: 40px;
+  }
+
+  .form-intro {
+    margin-bottom: 24px;
+  }
+
+  .success-title::before {
+    width: 52px;
+    height: 52px;
+    font-size: 28px;
+  }
+
+  .success-card {
+    padding: 24px 20px;
+  }
+
+  .success-card-item {
+    margin-bottom: 18px;
+  }
+
+  .info-list {
+    padding-left: 44px;
+  }
+}
+
+/* Móvil estrecho */
+@media (max-width: 400px) {
+  :root {
+    --fs-h2: 28px;
+    --fs-h3: 24px;
+    --fs-h4: 20px;
+  }
+
+  .nav-links {
+    gap: 4px 18px;
+  }
+
+  .search-bar {
+    padding: 6px 8px;
+  }
+
+  .icon-btn {
+    min-width: 36px;
+  }
+
+  .form-card {
+    padding: 24px 16px;
+  }
+
+  .news-card {
+    padding: 18px;
+  }
+
+  /* Calendario: que los 7 días quepan en 320px */
+  .calendar-card {
+    padding: 14px 8px;
+  }
+
+  .calendar-grid.weekdays span {
+    letter-spacing: -0.3px;
+  }
+
+  .success-card-item {
+    gap: 12px;
   }
 }

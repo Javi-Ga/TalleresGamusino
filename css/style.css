@@ -1,31 +1,115 @@
-/* Reseteo general */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  /* Roles de color */
+  --color-primary: #0F172A;
+  /* azul oscuro: fondo, y texto sobre claro/verde/amarillo */
+  --color-secondary: #8FE350;
+  /* verde: acciones, navegación, talleres */
+  --color-tertiary: #EDC544;
+  /* amarillo: novedades, avisos, formulario */
+  --color-secondary-hover: #6FC13A;
+  --color-tertiary-hover: #D4A92A;
+
+  /* Cabecera y pie */
+  --color-header: #FFFFFF;
+  --color-header-text: #1E1E1E;
+
+  /* Colores funcionales (valores de GOV.UK) */
+  --color-text: #FFFFFF;
+  /* texto sobre fondo oscuro */
+  --color-link: #1a65a6;
+  --color-link-hover: #0f385c;
+  --color-link-visited: #54319f;
+  --color-error: #ca3535;
+  --color-focus: #ffdd00;
+  --color-success: #FFFFFF;
+  /* éxito: texto blanco + icono ✓ */
+
+  /* Neutros de apoyo */
+  --color-surface: #FFFFFF;
+  --color-surface-gray: #D1D5DB;
+  /* tarjeta de confirmación y campos */
+  --color-border: #E0E0E0;
+  --color-muted: #475569;
+  --color-overlay: rgba(15, 23, 42, 0.78);
+
+  /* Tipografía: Source Serif en toda la plataforma */
+  --font-main: 'Source Serif 4', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+
+  /* Escala tipográfica (nunca por debajo de 16px) */
+  --fs-h1: 64px;
+  --fs-h2: 40px;
+  --fs-h3: 32px;
+  --fs-h4: 24px;
+  --fs-text: 20px;
+  --fs-button: 18px;
+  --fs-small: 16px;
+
+  /* Botones */
+  --btn-radius: 37px;
+  --btn-pad-y: 8px;
+  --btn-pad-x: 24px;
+  --btn-border: 2px solid var(--color-primary);
+
+  /* Tarjetas */
+  --card-radius: 18px;
+  --card-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+}
+
+/* Móvil: la escala baja un escalón, el texto nunca baja de 16px */
+@media (max-width: 850px) {
+  :root {
+    --fs-h2: 32px;
+    --fs-h3: 26px;
+    --fs-h4: 22px;
+    --fs-text: 18px;
+  }
+}
+
+/* ---------- 2. Base ---------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --bg-dark: #0a1128;
-  --accent-lime: #99e265;
-  --accent-yellow: #f8c057;
-  --card-cream: #fce7b2;
-  --text-dark: #1b212f;
-  --text-light: #ffffff;
-}
-
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-  line-height: 1.5;
+  font-family: var(--font-main);
+  font-size: var(--fs-text);
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  line-height: 1.6;
   overflow-x: hidden;
-  /* Marca de agua de fondo que emula el sello circular de la imagen */
+  /* Marca de agua tenue que emula el sello del centro */
   background-image:
     radial-gradient(circle at 10% 8%, rgba(255, 255, 255, 0.04) 0%, transparent 25%),
     radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.03) 0%, transparent 30%),
     radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.02) 0%, transparent 40%);
   background-repeat: no-repeat;
+}
+
+/* Marca de agua repetida (inscripción y confirmación) */
+.bg-watermark-tiled {
+  background-image:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  background-position: 0 0, 150px 150px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
 }
 
 .container {
@@ -34,11 +118,56 @@ body {
   padding: 0 20px;
 }
 
-/* Header */
+/* Enlaces de texto (estados de GOV.UK). Los enlaces con clase
+   (botones, navegación, pie) tienen su propio estilo. */
+a:where(:not([class])) {
+  color: var(--color-link);
+}
+
+a:where(:not([class])):hover {
+  color: var(--color-link-hover);
+}
+
+a:where(:not([class])):visited {
+  color: var(--color-link-visited);
+}
+
+/* ---------- 3. Accesibilidad ---------- */
+/* Foco de teclado: amarillo con contorno oscuro */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 0;
+  box-shadow: 0 0 0 6px var(--color-primary);
+}
+
+.skip-link {
+  position: absolute;
+  left: 20px;
+  top: -4rem;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* ---------- 4. Cabecera ---------- */
 .main-header {
-  background-color: #ffffff;
+  background-color: var(--color-header);
+  color: var(--color-header-text);
   padding: 10px 0;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header-container {
@@ -51,28 +180,39 @@ body {
 }
 
 .logo {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border: 1px solid #777;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #333;
-  font-size: 14px;
+  color: var(--color-header-text);
+  font-size: 18px;
+  text-decoration: none;
 }
 
 .nav-links {
   display: flex;
-  gap: 36px;
+  gap: 32px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #2b2b2b;
-  font-size: 13px;
+  color: var(--color-header-text);
+  font-size: var(--fs-button);
   font-weight: 600;
-  letter-spacing: 0.2px;
+  text-underline-offset: 6px;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Página actual */
+.nav-links a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .header-tools {
@@ -84,113 +224,192 @@ body {
 .search-bar {
   display: flex;
   align-items: center;
-  background: #ffffff;
-  border: 1px solid #dcdcdc;
-  border-radius: 4px;
-  padding: 4px 10px;
+  background: var(--color-surface);
+  border: 1px solid #b8b8b8;
+  border-radius: 6px;
+  padding: 6px 12px;
   gap: 8px;
 }
 
 .search-bar i {
-  font-size: 11px;
-  color: #888;
+  font-size: var(--fs-small);
+  color: var(--color-muted);
 }
 
 .search-bar input {
   border: none;
   outline: none;
-  font-size: 11px;
-  width: 80px;
+  font-family: var(--font-main);
+  font-size: var(--fs-small);
+  color: var(--color-header-text);
+  width: 130px;
+}
+
+.search-bar:focus-within {
+  outline: 3px solid var(--color-focus);
+  box-shadow: 0 0 0 6px var(--color-primary);
 }
 
 .icon-btn {
   background: none;
   border: none;
   cursor: pointer;
-  color: #444;
-  font-size: 14px;
+  color: var(--color-header-text);
+  font-size: 20px;
+  min-width: 40px;
+  min-height: 40px;
 }
 
-/* Hero */
+/* ---------- 5. Botones ---------- */
+/* Principal: blanco con texto azul. Secundario: verde con texto azul.
+   Ambos redondeados, borde inferior oscuro de 2px, texto centrado y en
+   negrita. Al pasar el ratón solo cambia el color (a uno más oscuro). */
+.btn-pill,
+.btn-green,
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  font-family: var(--font-main);
+  font-size: var(--fs-button);
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-primary);
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  border: 0;
+  border-bottom: var(--btn-border);
+  border-radius: var(--btn-radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-pill {
+  background-color: var(--color-surface);
+}
+
+.btn-pill:hover {
+  background-color: #D9DEE6;
+}
+
+.btn-green,
+.btn-cta {
+  background-color: var(--color-secondary);
+}
+
+.btn-green:hover,
+.btn-cta:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+.btn-cta {
+  padding: 12px 40px;
+  white-space: nowrap;
+}
+
+/* ---------- 6. Pie ---------- */
+.main-footer {
+  background-color: var(--color-header);
+  color: var(--color-header-text);
+  padding: 16px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-size: var(--fs-small);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-socials a {
+  color: var(--color-header-text);
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.footer-socials a:hover {
+  color: var(--color-link-hover);
+}
+
+/* ---------- 7. Portada: hero ---------- */
 .hero-section {
   padding: 55px 0 35px;
 }
 
 .sub-brand {
-  font-family: 'Cinzel', serif;
-  font-size: 20px;
+  font-size: var(--fs-h4);
   letter-spacing: 2px;
   margin-bottom: 20px;
   font-weight: 700;
 }
 
 .hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
+  font-size: clamp(2.25rem, 1.2rem + 4.5vw, var(--fs-h1));
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .hero-title span {
-  color: var(--accent-yellow);
+  color: var(--color-tertiary);
 }
 
-/* Tarjeta La estrella de la temporada */
+/* ---------- 8. Portada: estrella de la temporada ---------- */
 .featured-card {
-  background-color: var(--accent-lime);
-  color: var(--text-dark);
-  border-radius: 18px;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border-radius: var(--card-radius);
   padding: 35px 40px;
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 30px;
   align-items: center;
   margin-bottom: 45px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--card-shadow);
 }
 
 .featured-info h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 38px;
-  font-weight: 700;
+  font-size: var(--fs-h2);
   margin-bottom: 12px;
 }
 
 .featured-info .subtitle {
   font-weight: 700;
-  font-size: 12.5px;
+  font-size: var(--fs-button);
   margin-bottom: 14px;
 }
 
 .featured-info .description {
-  font-size: 12px;
+  font-size: var(--fs-small);
   line-height: 1.6;
   margin-bottom: 24px;
-  color: #222;
-}
-
-.btn-pill {
-  display: inline-block;
-  background-color: #ffffff;
-  color: #111;
-  text-decoration: none;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 8px 18px;
-  border-radius: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .featured-image img {
   width: 100%;
-  height: 240px;
+  height: 300px;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 8px;
   display: block;
 }
 
-/* Middle Grid: Novedades & Filtro */
+/* ---------- 9. Portada: novedades y filtro ---------- */
 .middle-grid {
   display: grid;
   grid-template-columns: 1.25fr 0.9fr;
@@ -201,36 +420,36 @@ body {
 .section-badge-title {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 26px;
-  font-family: 'Playfair Display', serif;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
-.section-badge-title i {
-  font-size: 20px;
+.section-badge-title h3 {
+  font-size: var(--fs-h3);
 }
 
-/* Novedades Card */
+.section-badge-title i {
+  font-size: 24px;
+  color: var(--color-tertiary);
+}
+
+/* Novedades: tarjeta amarilla */
 .news-card {
-  background-color: var(--card-cream);
-  color: #2b261b;
-  border-radius: 16px;
+  background-color: var(--color-tertiary);
+  color: var(--color-primary);
+  border-radius: var(--card-radius);
   padding: 24px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--card-shadow);
 }
 
 .news-header h4 {
-  font-weight: 800;
-  font-size: 13.5px;
-  color: #1a1a1a;
+  font-size: var(--fs-h4);
 }
 
 .news-header p {
-  font-size: 12px;
+  font-size: var(--fs-small);
   font-style: italic;
   margin-bottom: 18px;
-  color: #444;
 }
 
 .news-body {
@@ -242,29 +461,28 @@ body {
 
 .news-img img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 8px;
   display: block;
 }
 
 .news-text p {
-  font-size: 12px;
+  font-size: var(--fs-small);
   line-height: 1.55;
-  color: #2a2a2a;
 }
 
-/* Filtro talleres & Select */
+/* Filtro y selector */
 .filter-group {
   margin-bottom: 20px;
 }
 
 .filter-group label {
   display: block;
-  font-size: 13.5px;
-  font-weight: 500;
+  font-size: var(--fs-small);
+  font-weight: 600;
   margin-bottom: 6px;
-  color: #d1d5db;
+  color: var(--color-surface-gray);
 }
 
 .select-wrapper {
@@ -273,12 +491,13 @@ body {
 
 .select-wrapper select {
   width: 100%;
-  padding: 9px 12px;
-  border-radius: 4px;
+  padding: 10px 36px 10px 12px;
+  border-radius: 6px;
   border: none;
-  font-size: 12px;
-  color: #777;
-  background-color: #fff;
+  font-family: var(--font-main);
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+  background-color: var(--color-surface);
   appearance: none;
   cursor: pointer;
 }
@@ -288,16 +507,16 @@ body {
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: #666;
-  font-size: 11px;
+  color: var(--color-muted);
+  font-size: 14px;
   pointer-events: none;
 }
 
 /* Calendario */
 .calendar-card {
-  background: #ffffff;
-  color: #333;
-  border-radius: 6px;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border-radius: 8px;
   padding: 16px 14px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -310,23 +529,26 @@ body {
 }
 
 .cal-title {
-  font-size: 11px;
+  font-size: var(--fs-small);
   font-weight: 700;
-  color: #333;
 }
 
 .cal-nav {
-  background: #f8c057;
+  background: var(--color-tertiary);
   border: none;
-  width: 18px;
-  height: 18px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 8px;
-  color: #fff;
+  font-size: 12px;
+  color: var(--color-primary);
   cursor: pointer;
+}
+
+.cal-nav:hover {
+  background: var(--color-tertiary-hover);
 }
 
 .calendar-grid {
@@ -336,28 +558,25 @@ body {
 }
 
 .calendar-grid.weekdays span {
-  font-size: 8.5px;
-  color: #999;
+  font-size: var(--fs-small);
+  color: var(--color-muted);
   font-weight: 600;
   margin-bottom: 8px;
 }
 
 .calendar-grid.days span {
-  font-size: 9.5px;
-  padding: 4px 0;
-  color: #333;
+  font-size: var(--fs-small);
+  padding: 5px 0;
 }
 
-/* Sección Nuestros talleres */
+/* ---------- 10. Portada: nuestros talleres ---------- */
 .workshops-section {
   text-align: center;
   padding: 20px 0 60px;
 }
 
 .workshops-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  font-weight: 700;
+  font-size: var(--fs-h2);
   margin-bottom: 28px;
 }
 
@@ -371,11 +590,13 @@ body {
 .carousel-arrow {
   background: none;
   border: none;
-  color: #ffffff;
+  color: var(--color-text);
   font-size: 24px;
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.85;
   padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .carousel-arrow:hover {
@@ -390,19 +611,18 @@ body {
 }
 
 .workshop-card {
-  background-color: var(--accent-lime);
-  color: var(--text-dark);
-  border-radius: 18px;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border-radius: var(--card-radius);
   padding: 22px 18px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: var(--card-shadow);
 }
 
 .workshop-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 25px;
-  font-weight: 700;
+  font-size: var(--fs-h3);
   margin-bottom: 12px;
 }
 
@@ -413,26 +633,20 @@ body {
 
 .card-img-wrap img {
   width: 100%;
-  height: 140px;
+  height: 150px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 8px;
   display: block;
 }
 
 .workshop-desc {
-  font-size: 11px;
+  font-size: var(--fs-small);
   line-height: 1.5;
-  color: #222;
   margin-bottom: 16px;
   flex-grow: 1;
 }
 
-.btn-pill-card {
-  font-size: 10px;
-  padding: 6px 14px;
-}
-
-/* Paginación Dots */
+/* Paginación */
 .dots-pagination {
   display: flex;
   justify-content: center;
@@ -441,272 +655,20 @@ body {
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color: #64748b;
+  background-color: #8392AA;
   display: inline-block;
 }
 
 .dot.active {
-  width: 18px;
-  border-radius: 4px;
-  background-color: #ffffff;
+  width: 22px;
+  border-radius: 5px;
+  background-color: var(--color-surface);
 }
 
-/* Footer */
-.main-footer {
-  background-color: #ffffff;
-  padding: 16px 0;
-  border-top: 1px solid #e0e0e0;
-}
-
-.footer-container {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-copy {
-  font-size: 10px;
-  font-weight: 800;
-  color: #333;
-  letter-spacing: 0.5px;
-}
-
-.footer-socials {
-  display: flex;
-  gap: 16px;
-}
-
-.footer-socials a {
-  color: #111;
-  font-size: 12px;
-  text-decoration: none;
-}
-
-/* Responsive */
-@media (max-width: 850px) {
-
-  .featured-card,
-  .middle-grid,
-  .news-body,
-  .workshops-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .carousel-arrow {
-    display: none;
-  }
-}
-
-/* =========================================
-   ESTILOS PARA LA PÁGINA 4 (CONFIRMACIÓN)
-   ========================================= */
-
-/* Fondo específico para simular los logos repetidos como marca de agua */
-.bg-watermark-tiled {
-  /* Genera un patrón tenue en el fondo manteniendo el azul oscuro */
-  background-image:
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 40%),
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
-  background-size: 300px 300px;
-  background-position: 0 0, 150px 150px;
-}
-
-.success-main {
-  /* Calcula la altura para centrar el contenido ocupando la pantalla */
-  min-height: calc(100vh - 120px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-}
-
-.success-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 700px;
-}
-
-.success-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 34px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  letter-spacing: 0.5px;
-}
-
-.success-subtitle {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 40px;
-}
-
-/* Tarjeta gris de datos */
-.success-card {
-  background-color: #d1d5db;
-  /* Gris claro */
-  color: #111;
-  border-radius: 12px;
-  padding: 40px 60px;
-  width: 100%;
-  max-width: 480px;
-  text-align: left;
-  margin-bottom: 40px;
-}
-
-.success-card-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 25px;
-}
-
-.success-card-item:last-child {
-  margin-bottom: 0;
-}
-
-.success-card-item i {
-  font-size: 16px;
-  width: 20px;
-  text-align: center;
-  color: #222;
-}
-
-.success-message {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.5;
-  margin-bottom: 35px;
-}
-
-/* Modificador del botón verde para esta vista */
-.btn-success {
-  font-size: 24px;
-  padding: 12px 35px;
-  border-radius: 10px;
-}
-
-/* Ajustes Responsive */
-@media (max-width: 600px) {
-  .success-title {
-    font-size: 26px;
-  }
-
-  .success-card {
-    padding: 30px 40px;
-  }
-
-  .btn-success {
-    font-size: 20px;
-    padding: 10px 25px;
-  }
-}
-
-/* =========================================
-   BOTÓN VERDE GLOBAL (CTA)
-   ========================================= */
-.btn-green {
-  display: inline-block;
-  background-color: var(--accent-lime);
-  /* Este es tu verde #99e265 */
-  color: var(--text-dark);
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  font-weight: 700;
-  text-decoration: none;
-  padding: 12px 35px;
-  border-radius: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-green:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(153, 226, 101, 0.4);
-}
-
-/* =========================================================
-   AÑADIDO · PANTALLA 2 (informacion.html)
-   Información detallada del taller.
-
-   Todo lo anterior de este archivo queda intacto.
-   Las reglas que comparten nombre con las de otras pantallas
-   (.hero-section, .sub-brand, .hero-title, .main-content,
-   cabecera/pie en móvil...) solo se aplican a informacion.html:
-   - dentro del <main> se limitan con #contenido
-   - en cabecera/pie, con body:has(#contenido)
-   (:where() mantiene la misma especificidad que el original).
-   ========================================================= */
-
-/* ---------- Variables nuevas ---------- */
-:root {
-  --accent-lime-hover: #6fc13a;
-  --overlay: rgba(10, 17, 40, 0.78);
-  --focus: #ffdd00;
-
-  --font-body: 'Plus Jakarta Sans', sans-serif;
-  --font-title: 'Playfair Display', serif;
-  --font-brand: 'Cinzel', serif;
-}
-
-/* ---------- Accesibilidad ---------- */
-/* Foco visible para teclado: anillo amarillo con borde oscuro */
-:where(body:has(#contenido)) :focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 0;
-  box-shadow: 0 0 0 6px var(--bg-dark);
-}
-
-.skip-link {
-  position: absolute;
-  left: 20px;
-  top: -4rem;
-  background-color: #ffffff;
-  color: var(--text-dark);
-  font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 4px;
-  z-index: 10;
-}
-
-.skip-link:focus {
-  top: 8px;
-}
-
-/* ---------- Header: extras de informacion.html ---------- */
-.logo {
-  text-decoration: none;
-  /* aquí el logo es un enlace */
-}
-
-:where(body:has(#contenido)) .nav-links a {
-  text-underline-offset: 6px;
-}
-
-:where(body:has(#contenido)) .nav-links a:hover {
-  text-decoration: underline;
-}
-
-/* Página actual (selector de atributo) */
-.nav-links a[aria-current="page"] {
-  font-weight: 700;
-  text-decoration: underline;
-}
-
-:where(body:has(#contenido)) .search-bar:focus-within {
-  outline: 3px solid var(--focus);
-  box-shadow: 0 0 0 6px var(--bg-dark);
-}
-
-/* ---------- Hero (imagen + banda de título) ---------- */
+/* ---------- 11. Información del taller ---------- */
 #contenido .hero-section {
   position: relative;
   display: flex;
@@ -722,17 +684,16 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* mantiene la proporción de la imagen */
 }
 
 .hero-band {
   position: relative;
-  background-color: var(--overlay);
+  background-color: var(--color-overlay);
   padding: 20px 0 28px;
 }
 
 #contenido .sub-brand {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 #contenido .hero-title {
@@ -740,47 +701,40 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 24px;
-  font-weight: 500;
+  font-size: var(--fs-h4);
+  font-weight: 600;
   line-height: 1.3;
   margin-top: 6px;
 }
 
-/* ---------- Contenido ---------- */
 #contenido .main-content {
   padding: 40px 0 70px;
 }
 
-/* Línea blanca bajo el hero */
 .divider {
   height: 8px;
   border: none;
   border-radius: 4px;
-  background-color: #ffffff;
+  background-color: var(--color-surface);
   margin: 0 0 40px;
 }
 
 .intro {
   max-width: 70ch;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: var(--fs-text);
+  line-height: 1.7;
   margin-bottom: 56px;
 }
 
-/* Bloques: Qué aprenderás / Metodología / Detalles clave */
 .info-block {
   margin-bottom: 48px;
 }
 
-/* Todos los títulos reservan el mismo hueco a la izquierda, así el texto
-   queda alineado y el icono (solo en el primero) ocupa ese hueco. */
+/* Todos los títulos reservan el hueco del icono para alinear el texto */
 .block-title {
   position: relative;
   padding-left: 46px;
-  font-family: var(--font-title);
-  font-size: 30.4px;
-  /* = h3 de .section-badge-title del listado (26px × 1.17) */
-  font-weight: 700;
+  font-size: var(--fs-h3);
   line-height: 1.5;
   margin-bottom: 10px;
 }
@@ -792,7 +746,7 @@ body {
   width: 30px;
   height: 30px;
   transform: translateY(-50%);
-  color: var(--accent-yellow);
+  color: var(--color-tertiary);
   /* el amarillo identifica lo que informa */
 }
 
@@ -800,136 +754,46 @@ body {
   max-width: 70ch;
   list-style: disc;
   padding-left: 68px;
-  font-size: 20px;
-  line-height: 1.6;
+  font-size: var(--fs-text);
+  line-height: 1.7;
 }
 
 .info-list li::marker {
-  color: var(--text-light);
+  color: var(--color-text);
 }
 
-/* ---------- Botón de acción (verde = lo que se puede hacer) ---------- */
 .cta {
   display: flex;
   justify-content: center;
   margin-top: 64px;
 }
 
-.btn-cta {
-  display: inline-block;
-  background-color: var(--accent-lime);
-  color: var(--text-dark);
-  text-decoration: none;
-  font-family: var(--font-body);
-  /* misma fuente que .btn-pill del listado */
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.5;
-  white-space: nowrap;
-  padding: 14px 40px;
-  border-radius: 20px;
-  /* mismo radio que .btn-pill */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.2s ease;
-}
-
-.btn-cta:hover {
-  background-color: var(--accent-lime-hover);
-}
-
-/* ---------- Footer: extra de informacion.html ---------- */
-:where(body:has(#contenido)) .footer-socials a:hover {
-  color: #555;
-}
-
-/* ---------- Responsive (informacion.html) ---------- */
-@media (max-width: 850px) {
-  :where(body:has(#contenido)) .header-container {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px 20px;
-  }
-
-  :where(body:has(#contenido)) .nav-links {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    gap: 10px 24px;
-  }
-
-  #contenido .hero-section {
-    min-height: 380px;
-    padding-top: 32px;
-  }
-
-  #contenido .sub-brand {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
-
-  #contenido .hero-title {
-    font-size: 34px;
-  }
-
-  .hero-subtitle {
-    font-size: 18px;
-  }
-
-  .block-title {
-    font-size: 26px;
-    padding-left: 38px;
-  }
-
-  .title-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .info-list {
-    font-size: 18px;
-    padding-left: 58px;
-  }
-
-  :where(body:has(#contenido)) .footer-container {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .btn-cta {
-    width: 100%;
-    text-align: center;
-    white-space: normal;
-  }
-}
-
-
+/* ---------- 12. Formulario de inscripción ---------- */
 .form-container {
   max-width: 760px;
 }
 
 .form-title {
-  font-family: var(--font-title);
-  font-size: 34px;
-  font-weight: 700;
+  font-size: var(--fs-h2);
   text-align: center;
   margin-bottom: 12px;
 }
 
 .form-intro {
-  font-size: 18px;
+  font-size: var(--fs-text);
   text-align: center;
   margin-bottom: 32px;
 }
 
-/* Tarjeta amarilla del formulario */
+/* Tarjeta amarilla */
 .form-card {
-  background-color: var(--accent-yellow);
-  color: var(--text-dark);
-  border-radius: 16px;
+  background-color: var(--color-tertiary);
+  color: var(--color-primary);
+  border-radius: var(--card-radius);
   padding: 36px 40px;
+  box-shadow: var(--card-shadow);
 }
 
-/* Campos en parejas (dos columnas); en móvil, una sola */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -942,13 +806,13 @@ body {
 
 .form-field label {
   display: block;
-  font-size: 16px;
+  font-size: var(--fs-button);
   font-weight: 700;
   margin-bottom: 6px;
 }
 
 .form-optional {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* Campos: gris de la tarjeta de confirmación, borde inferior oscuro */
@@ -956,19 +820,18 @@ body {
 .form-field select,
 .form-field textarea {
   width: 100%;
-  font-family: var(--font-body);
-  font-size: 16px;
-  color: var(--text-dark);
-  background-color: #d1d5db;
+  font-family: var(--font-main);
+  font-size: var(--fs-button);
+  color: var(--color-primary);
+  background-color: var(--color-surface-gray);
   border: 2px solid transparent;
-  border-bottom-color: var(--text-dark);
+  border-bottom-color: var(--color-primary);
   border-radius: 6px;
   padding: 10px 12px;
 }
 
-/* Calendario*/
 .form-field input[type="date"] {
-  background-color: #ffffff;
+  background-color: var(--color-surface);
 }
 
 .form-field textarea {
@@ -978,19 +841,20 @@ body {
 
 .form-field .select-wrapper select {
   padding-right: 36px;
+  color: var(--color-primary);
 }
 
+/* Error: color funcional, nunca solo el borde */
 .form-field :user-invalid {
-  border-color: #ca3535;
+  border-color: var(--color-error);
 }
 
 .form-card :focus-visible {
-  outline: 3px solid var(--bg-dark);
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
   box-shadow: none;
 }
 
-/* Acciones */
 .form-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1001,8 +865,8 @@ body {
 }
 
 .form-link {
-  color: var(--text-dark);
-  font-size: 16px;
+  color: var(--color-primary);
+  font-size: var(--fs-button);
   font-weight: 700;
   text-decoration: none;
 }
@@ -1011,17 +875,156 @@ body {
   text-decoration: underline;
 }
 
-button.btn-green {
-  border: 0;
-  cursor: pointer;
+/* ---------- 13. Confirmación ---------- */
+.success-main {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
 }
 
-/* ---------- Responsive (inscripcion.html) ---------- */
+.success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 760px;
+}
+
+/* Éxito: texto blanco con icono ✓ */
+.success-title {
+  color: var(--color-success);
+  font-size: var(--fs-h2);
+  margin-bottom: 24px;
+}
+
+.success-title::before {
+  content: "✓";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 36px;
+  line-height: 1;
+}
+
+.success-subtitle {
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  margin-bottom: 36px;
+}
+
+.success-card {
+  background-color: var(--color-surface-gray);
+  color: var(--color-primary);
+  border-radius: 12px;
+  padding: 36px 56px;
+  width: 100%;
+  max-width: 480px;
+  text-align: left;
+  margin-bottom: 36px;
+  box-shadow: var(--card-shadow);
+}
+
+.success-card-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: var(--fs-text);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.success-card-item:last-child {
+  margin-bottom: 0;
+}
+
+.success-card-item i {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+}
+
+.success-message {
+  font-size: var(--fs-text);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+/* ---------- 14. Responsive ---------- */
 @media (max-width: 850px) {
-  .form-title {
-    font-size: 26px;
+
+  /* Cabecera en dos filas: logo + herramientas, navegación debajo */
+  .header-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px 20px;
   }
 
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+  }
+
+  .footer-container {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Una sola columna */
+  .featured-card,
+  .middle-grid,
+  .news-body,
+  .workshops-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-card {
+    padding: 28px 22px;
+  }
+
+  .carousel-arrow {
+    display: none;
+  }
+
+  #contenido .hero-section {
+    min-height: 380px;
+    padding-top: 32px;
+  }
+
+  .sub-brand {
+    margin-bottom: 12px;
+  }
+
+  .block-title {
+    padding-left: 38px;
+  }
+
+  .title-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .info-list {
+    padding-left: 58px;
+  }
+
+  .btn-cta {
+    width: 100%;
+    white-space: normal;
+  }
+
+  /* Formulario */
   .form-card {
     padding: 28px 20px;
   }
@@ -1039,5 +1042,16 @@ button.btn-green {
 
   .form-actions .btn-green {
     width: 100%;
+  }
+
+  /* Confirmación */
+  .success-card {
+    padding: 28px 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-bar input {
+    width: 90px;
   }
 }

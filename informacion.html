@@ -69,28 +69,60 @@
           formación de vanguardia con alta proyección práctica.
         </p>
 
-        <section class="info-block" aria-labelledby="que-aprenderas">
-          <h2 id="que-aprenderas" class="block-title">
-            <svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8" />
-              <line x1="12" y1="10.5" x2="12" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              <circle cx="12" cy="7.3" r="1.25" fill="currentColor" />
-            </svg>
-            Qué aprenderás:
-          </h2>
-          <ul class="info-list">
-            <li>Escaneo de redes y detección de vulnerabilidades.</li>
-            <li>Técnicas de pentesting y defensa en entornos virtuales.</li>
-            <li>Criptografía práctica y bastionado de sistemas.</li>
-          </ul>
-        </section>
+        <!-- Contenedor a 2 columnas: texto a la izquierda, tarjeta verde a la derecha -->
+        <div class="info-layout">
+          <div class="info-details">
+            <section class="info-block" aria-labelledby="que-aprenderas">
+              <h2 id="que-aprenderas" class="block-title">
+                <svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8" />
+                  <line x1="12" y1="10.5" x2="12" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <circle cx="12" cy="7.3" r="1.25" fill="currentColor" />
+                </svg>
+                Qué aprenderás:
+              </h2>
+              <ul class="info-list">
+                <li>Escaneo de redes y detección de vulnerabilidades.</li>
+                <li>Técnicas de pentesting y defensa en entornos virtuales.</li>
+                <li>Criptografía práctica y bastionado de sistemas.</li>
+              </ul>
+            </section>
 
-        <section class="info-block" aria-labelledby="metodologia">
+            <section class="info-block" aria-labelledby="metodologia">
           <h2 id="metodologia" class="block-title">Metodología:</h2>
           <ul class="info-list">
             <li>Prácticas 100% en laboratorio cerrado.</li>
             <li>Retos CTF por equipo.</li>
           </ul>
+        </section>
+
+        <!-- Bloque intermedio: Tarjeta verde con mapa expandible -->
+        <section class="route-banner-card">
+          <div class="route-banner-info">
+            <h2 class="block-title">
+              <svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8" />
+                <path d="M12 7v5l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+              ¿Cómo llegar al aula?
+            </h2>
+            <p>Haz clic en el plano para ver el recorrido animado paso a paso desde la entrada del instituto.</p>
+            <a href="#mostrar-mapa" class="btn-pill">Ver ruta completa</a>
+          </div>
+
+          <a href="#mostrar-mapa" class="route-banner-preview" aria-label="Abrir mapa de ruta ampliado">
+            <img src="gifs/ruta_ciber.gif" alt="Miniatura de la ruta al aula de ciberseguridad">
+            <span class="route-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Ampliar</span>
+          </a>
+
+          <!-- Modal expandido (usa las clases .overlay-gif existentes en tu style.css) -->
+          <div id="mostrar-mapa" class="overlay-gif">
+            <a href="#" class="cerrar-click-fondo" aria-label="Cerrar vista ampliada"></a>
+            <div class="contenedor-gif">
+              <a href="#" class="boton-cerrar">&times;</a>
+              <img src="gifs/ruta_ciber.gif" alt="Ruta completa al aula de ciberseguridad">
+            </div>
+          </div>
         </section>
 
         <section class="info-block" aria-labelledby="detalles-clave">
@@ -101,10 +133,16 @@
             <li>Nivel: Iniciación/Intermedio (Sin requisitos previos)</li>
           </ul>
         </section>
+          </div>
 
-        <!-- Llamada a la acción: lleva al formulario (pantalla 3) -->
-        <div class="cta">
-          <a class="btn-cta" href="inscripcion.html">Inscribirme ahora</a>
+          <!-- Tarjeta verde con la ruta animada -->
+          <aside class="route-card">
+            <h3>Ruta al Aula de Ciberseguridad</h3>
+            <div class="route-media">
+              <img src="gifs/ruta_ciber.gif" alt="Ruta animada hacia el aula de ciberseguridad">
+            </div>
+            <p class="route-caption">Sigue las indicaciones del mapa para llegar desde la entrada del campus.</p>
+          </aside>
         </div>
 
       </div>

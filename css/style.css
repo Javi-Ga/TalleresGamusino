@@ -1060,6 +1060,12 @@ li {
     margin-bottom: 36px;
   }
 
+  .featured-info .btn-pill {
+    display: flex;
+    width: max-content;
+    margin: 0 auto 16px auto;
+  }
+
   .featured-image img {
     height: 220px;
   }
@@ -1422,4 +1428,53 @@ li {
   .route-banner-preview img {
     height: 200px;
   }
+}
+/* ---------- Animación Deslizante de Talleres (Bucle Continuo Corregido) ---------- */
+
+.card-img-wrap {
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  /* Fondo por si acaso hay un micro-retraso en el renderizado */
+  background-color: var(--color-primary); 
+}
+
+.card-img-slider {
+  display: flex;
+  width: 400%;
+  margin: 0;
+  padding: 0;
+  /* El easing hace que la transición sea más natural */
+  animation: slideCarousel 12s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-img-slider img {
+  /* ESTA ES LA CLAVE: Evita que Flexbox encoja las imágenes o deje márgenes */
+  flex: 0 0 25%; 
+  width: 25%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+  .card-img-slider img {
+    height: 170px;
+  }
+}
+
+/* 
+  Ajuste milimétrico de los tiempos (slide de 1s, pausa de 3s):
+  0% a 25% (0-3 seg): Pausa en Imagen 1
+  33% a 58% (4-7 seg): Pausa en Imagen 2
+  66% a 91% (8-11 seg): Pausa en Imagen 3
+  100% (12 seg): Termina de deslizar a la Imagen 4 (clon) e instantáneamente salta al 0%
+*/
+@keyframes slideCarousel {
+  0%, 25%  { transform: translateX(0); }
+  33.33%, 58.33% { transform: translateX(-25%); }
+  66.66%, 91.66% { transform: translateX(-50%); }
+  100%     { transform: translateX(-75%); }
 }
